@@ -1,7 +1,5 @@
 import 'dart:ffi' as ffi;
-import 'dart:io' show Platform, Directory;
-
-import 'package:path/path.dart' as path;
+import 'dart:io' show Directory;
 
 // FFI signature of the hello_world C function
 typedef HelloWorldFunc = ffi.Void Function();
