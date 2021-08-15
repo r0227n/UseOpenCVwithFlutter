@@ -2,13 +2,19 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "path",
+      "rootUri": "file:///Users/ryo/.pub-cache/hosted/pub.dartlang.org/path-1.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "c_hello_world_ffi",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-08-14T16:06:42.813682Z",
+  "generated": "2021-08-15T06:47:08.895596Z",
   "generator": "pub",
   "generatorVersion": "2.13.4"
 }
