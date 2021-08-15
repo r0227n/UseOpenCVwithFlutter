@@ -1,4 +1,7 @@
 import 'dart:ffi' as ffi;
+import 'dart:io' show Platform, Directory;
+
+import 'package:path/path.dart' as path;
 
 // FFI signature of the hello_world C function
 typedef HelloWorldFunc = ffi.Void Function();
@@ -7,8 +10,9 @@ typedef HelloWorld = void Function();
 
 void main() {
   // Open the dynamic library
-  final dylib = ffi.DynamicLibrary.open(
-      '/Users/ryo/github/UseOpenCVwithFlutter/ffi/c/ffi_library/libhello.dylib');
+  var libraryPath =
+      path.join(Directory.current.path, 'ffi_library', 'libhello.dylib');
+  final dylib = ffi.DynamicLibrary.open(libraryPath);
 
   // Look up the C function 'hello_world'
   final HelloWorld hello = dylib
