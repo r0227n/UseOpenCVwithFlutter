@@ -1,0 +1,4 @@
+/Users/ryo/github/UseOpenCVwithFlutter/ffi/cpp/ffi_library/CMakeFiles/rebuild_cache.dir
+/Users/ryo/github/UseOpenCVwithFlutter/ffi/cpp/ffi_library/CMakeFiles/edit_cache.dir
+/Users/ryo/github/UseOpenCVwithFlutter/ffi/cpp/ffi_library/CMakeFiles/hello_test.dir
+/Users/ryo/github/UseOpenCVwithFlutter/ffi/cpp/ffi_library/CMakeFiles/hello_library.dir
