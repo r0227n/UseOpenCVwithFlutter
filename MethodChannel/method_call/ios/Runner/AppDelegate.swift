@@ -8,23 +8,21 @@ import Flutter
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       
     let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
-    let batteryChannel = FlutterMethodChannel(name: "samples.flutter.dev/function",
+    let methodChannel = FlutterMethodChannel(name: "samples.flutter.dev/function",
                                               binaryMessenger: controller.binaryMessenger)
-    
-                                               
-    batteryChannel.setMethodCallHandler(
+                                     
+    methodChannel.setMethodCallHandler(
       {
         [weak self] (call: FlutterMethodCall, result: FlutterResult) -> Void in
         // Note: this method is invoked on the UI thread.
         guard call.method == "getMethodText" else {
-          
-          
           result(FlutterMethodNotImplemented)
           return
         }
+
+        // Note: this arguments is invoked on the UI thread.
         let parameters = call.arguments as? Int
-     
-        self?.calculateParameter(result: result, dartInt: parameters ?? 0)
+        self?.receiveBatteryLevel(result: result, dartInt: parameters ?? 0)
       }
     )
         
@@ -32,16 +30,7 @@ import Flutter
     return super.application(application, didFinishLaunchingWithOptions: launchOptions) 
   } 
   
-    private func calculateParameter(result: FlutterResult, dartInt: Int) {
-    // let device = UIDevice.current
-    // device.isBatteryMonitoringEnabled = true
-    // if device.batteryState == UIDevice.BatteryState.unknown {
-    //   result(FlutterError(code: "UNAVAILABLE",
-    //                       message: "Battery info unavailable",
-    //                       details: nil))
-    // } else {
-    //   result(Int(device.batteryLevel * 100))
-    // }
+  private func calculateParameter(result: FlutterResult, dartInt: Int) {
     result(Int(46+dartInt))
   }
 }

@@ -25,10 +25,9 @@ class _MyHomePageState extends State<MyHomePage> {
   static const platform = const MethodChannel('samples.flutter.dev/function');
   String _methodText = 'number';
 
-  Future<void> _getBatteryLevel() async {
+  Future<void> _getMethodNumber() async {
     String methodText;
     try {
-      // final int result = await platform.invokeMethod('getMethodText');
       final int result = await platform.invokeMethod('getMethodText', 10);
 
       methodText = '$result';
@@ -50,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             ElevatedButton(
               child: Text('Get Battery Level'),
-              onPressed: _getBatteryLevel,
+              onPressed: _getMethodNumber,
             ),
             Text(_methodText),
           ],
