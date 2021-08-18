@@ -19,13 +19,10 @@ struct ContentView: View {
         .onAppear(perform: {
             // UIImage -> (JPEG)Data
             let jpegData = image.jpegData(compressionQuality: 1)!
-            print(image.pngData()!)
-            print("before : ", jpegData)
             // Data -> Array<UInt8>
             let arrayUInt8 = jpegData.encodedHexadecimals!
             // Array<UInt8> -> Data
             let data = Data(arrayUInt8)
-            print("after : ", data)
             // Data -> UIImage
             change = UIImage(data: data)!
         })
