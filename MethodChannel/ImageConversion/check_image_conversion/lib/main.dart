@@ -31,17 +31,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void _convertImage() async {
-    setState(() {
-      final pathImage = File(
-          '/Users/ryo/github/UseOpenCVwithFlutter/MethodChannel/ImageConversion/check_image_conversion/image/icon.jpeg');
+  void _convertImage() {
+    final pathImage = File(
+        '/Users/ryo/github/UseOpenCVwithFlutter/MethodChannel/ImageConversion/check_image_conversion/image/icon.jpeg');
 
-      // JPEP Decode : List of bytes -> Jpeg Image
-      pkgImg.Image image = pkgImg.decodeJpg(pathImage.readAsBytesSync());
-      // JPEG Encode : Image -> List<Int>
-      List<int> jpg = pkgImg.JpegEncoder().encodeImage(image);
-      // List<Int> -> Unit8List
-      Uint8List bytesList = Uint8List.fromList(jpg);
+    // JPEP Decode : List of bytes -> Jpeg Image
+    pkgImg.Image image = pkgImg.decodeJpg(pathImage.readAsBytesSync());
+    // JPEG Encode : Image -> List<Int>
+    List<int> jpg = pkgImg.JpegEncoder().encodeImage(image);
+    // List<Int> -> Unit8List
+    Uint8List bytesList = Uint8List.fromList(jpg);
+    setState(() {
       // Unit8List -> Image
       _image = Image.memory(bytesList);
     });
