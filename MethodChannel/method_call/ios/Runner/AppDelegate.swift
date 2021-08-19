@@ -22,7 +22,7 @@ import Flutter
 
         // Note: this arguments is invoked on the UI thread.
         let parameters = call.arguments as? Int
-        self?.receiveBatteryLevel(result: result, dartInt: parameters ?? 0)
+        self?.calculateParameter(result: result, dartInt: parameters ?? 0)
       }
     )
         
