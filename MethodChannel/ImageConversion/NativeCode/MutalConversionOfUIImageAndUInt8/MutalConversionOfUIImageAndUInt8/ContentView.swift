@@ -19,12 +19,13 @@ struct ContentView: View {
         .onAppear(perform: {
             // UIImage -> (JPEG)Data
             let jpegData = image.jpegData(compressionQuality: 1)!
-            // Data -> Array<UInt8>
-            let arrayUInt8 = jpegData.encodedHexadecimals!
-            // Array<UInt8> -> Data
-            let data = Data(arrayUInt8)
+            // Data -> String(Base64)
+            let base64 = jpegData.base64EncodedString()
+            // String(Base64) -> Data
+            let encodedBase64 = Data(base64Encoded: base64)
             // Data -> UIImage
-            change = UIImage(data: data)!
+            change = UIImage(data: encodedBase64!)!
+            print(encodedBase64?.base64EncodedString())
         })
     }
 }
