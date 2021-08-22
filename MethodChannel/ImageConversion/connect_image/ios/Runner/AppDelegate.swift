@@ -13,15 +13,24 @@ import Flutter
                                      
     methodChannel.setMethodCallHandler(
       {
-        [weak self] (call: FlutterMethodCall, result: FlutterResult) -> Void in
+        (call: FlutterMethodCall, result: FlutterResult) -> Void in
 
         guard call.method == "getBase64" else {
           result(FlutterMethodNotImplemented)
           return
         }
+        
+        let parameters = call.arguments as! String
+        // String(Base64) -> Data
+        let encodedBase64 = Data(base64Encoded: parameters)
+        // Data -> UIImage
+        let image = OpenCVManager.gray(UIImage(data: encodedBase64!)!)
+        // UIImage -> (JPEG)Data
+        let jpegData = image?.jpegData(compressionQuality: 1)!
+        // Data -> String(Base64)
+        let base64 = jpegData!.base64EncodedString()
 
-        let parameters = call.arguments 
-        result(parameters)
+        result(base64)
       }
     )
         
